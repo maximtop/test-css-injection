@@ -1,10 +1,19 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <script src="index.js" type="text/javascript"></script>
+    <script src="src/js/index.js" type="text/javascript"></script>
     <script type="text/javascript">
         console.log('fired from inline script')
     </script>
+    <style>
+        .adguard {
+            height: 50px;
+            width: 200px;
+            border: 2px solid lightsalmon;
+            background-color: lightslategray;
+        }
+    </style>
+    <link rel="stylesheet" href="src/css/styles.css">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
@@ -12,6 +21,7 @@
 </head>
 <body>
     <h1>Test script order with AdGuard extension</h1>
-    <div class="adguard">This div will be removed by AdGuard</div>    
+    <div class="adguard">This div will be removed by AdGuard</div>
+    <div class="adguard-coral">This div will be modified by AdGuard</div>
 </body>
 </html>
