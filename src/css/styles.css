@@ -1,12 +1,9 @@
 .block {
     display: flex;
     justify-content: space-evenly;
-    width: 500px;
 }
 
 .adguard-coral {
-    height: auto;
-    width: 200px;
     border: 2px solid aquamarine;
     background-color: lightcoral;
 }
