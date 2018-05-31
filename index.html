@@ -4,7 +4,15 @@
 <head>
     <script src="src/js/index.js" type="text/javascript" async></script>
     <script type="text/javascript">
-        console.log('fired from inline script')
+        console.log('fired from inline script');
+        function changeColor() {
+            var block = document.querySelector('.adguard-coral.copy');
+            if(block) {
+                block.style.background = 'green';
+            }
+            requestAnimationFrame(changeColor);
+        }
+        changeColor();
     </script>
     <style>
         .adguard {
