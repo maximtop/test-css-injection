@@ -5,6 +5,7 @@
     <script src="src/js/index.js" type="text/javascript" async></script>
     <script type="text/javascript">
         console.log('fired from inline script');
+        window.scriptExecuted = 'blabla from inline script';
         function changeColor() {
             var block = document.querySelector('.adguard-coral.copy');
             if(block) {
@@ -31,6 +32,7 @@
 </head>
 
 <body>
+    <div id="scriptExecuted">Test scriptExecuted</div>
     <div class="container">
         <h1>Test script order execution with enabled AdGuard extension</h1>
         <div class='row py-2 block'>
@@ -70,6 +72,11 @@
         <h1>Test iframe</h1>
         <iframe src="https://devizier.github.io/test-script-order/" width="800" height="400"></iframe>
     </div>
+    <script type="text/javascript">
+        console.log('fired from inline script');
+        window.scriptExecuted = 'blabla from inline script';
+        console.log(window.scriptExecuted);
+    </script>
 </body>
 
 </html>
