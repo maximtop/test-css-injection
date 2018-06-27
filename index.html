@@ -3,6 +3,7 @@
 
 <head>
     <script src="src/js/index.js" type="text/javascript" async></script>
+    <script src="https://unpkg.com/axios/dist/axios.min.js" async></script>
     <script type="text/javascript">
         console.log('fired from inline script');
         // window.scriptExecuted = 'blabla from inline script';
@@ -15,6 +16,13 @@
             requestAnimationFrame(changeColor);
         }
         changeColor();
+        let data;
+        try {
+            data = await axios.get('js/data.json');
+        } catch (e) {
+            console.log(error)
+        }
+        console.log(data);
     </script>
     <style>
         .adguard {
