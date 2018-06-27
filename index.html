@@ -16,16 +16,6 @@
             requestAnimationFrame(changeColor);
         }
         changeColor();
-        const printData = async () => {
-            let data;
-            try {
-                data = await axios.get('js/data.json');
-            } catch (error) {
-                console.log(error);
-            }
-            console.log(data);
-            }
-        printData();
     </script>
     <style>
         .adguard {
@@ -84,9 +74,16 @@
         <iframe src="https://devizier.github.io/test-script-order/" width="800" height="400"></iframe>
     </div>
     <script type="text/javascript">
-        // console.log('fired from inline script');
-        // window.scriptExecuted = 'blabla from inline script';
-        // console.log(window.scriptExecuted);
+        const printData = async () => {
+            let data;
+            try {
+                data = await axios.get('js/data.json');
+            } catch (error) {
+                console.log(error);
+            }
+            console.log(data);
+            }
+        printData();
     </script>
 </body>
 
