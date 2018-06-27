@@ -16,13 +16,16 @@
             requestAnimationFrame(changeColor);
         }
         changeColor();
-        let data;
-        try {
-            data = await axios.get('js/data.json');
-        } catch (e) {
-            console.log(error)
-        }
-        console.log(data);
+        const printData = async () => {
+            let data;
+            try {
+                data = await axios.get('js/data.json');
+            } catch (e) {
+                console.log(error)
+            }
+            console.log(data);
+            }
+        printData();
     </script>
     <style>
         .adguard {
