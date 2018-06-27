@@ -77,7 +77,8 @@
         const printData = async () => {
             let data;
             try {
-                data = await axios.get('src/js/data.json');
+                const response = await axios.get('src/js/data.json');
+                data = response.data;
             } catch (error) {
                 console.log(error);
             }
