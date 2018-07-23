@@ -3,19 +3,6 @@
 
 <head>
   <script src="src/js/index.js" type="text/javascript" async></script>
-  <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
-  <script type="text/javascript">
-    console.log('fired from inline script');
-    // window.scriptExecuted = 'blabla from inline script';
-    function changeColor() {
-      var block = document.querySelector('.adguard-coral.copy');
-      if (block) {
-        block.style.background = 'green';
-        return;
-      }
-      requestAnimationFrame(changeColor);
-    }
-    changeColor();
   </script>
   <style>
     .adguard {
@@ -29,47 +16,10 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>Test script order execution with enabled AdGuard extension</title>
+  <title>Test css injection in the documents</title>
 </head>
 
 <body>
-  <div id="scriptExecuted">Test scriptExecuted</div>
-  <div class="container">
-    <h1>Test script order execution with enabled AdGuard extension</h1>
-    <div class='row py-2 block'>
-      <div class="container">
-        <div class="row">
-          <div class="col">
-            <h2>Block 1 will be removed</h2>
-          </div>
-        </div>
-        <div class="row justify-content-around">
-          <div class="col-4 adguard">
-            <p>Copy of this div will be removed by AdGuard</p>
-          </div>
-          <div class="col-4 adguard copy">
-            <p>Copy of this div will be removed by AdGuard</p>
-          </div>
-        </div>
-      </div>
-    </div>
-    <div class="row py-2 block">
-      <div class="container">
-        <div class="row">
-          <div class="col">
-            <h2>Block 2 will be changed</h2>
-          </div>
-        </div>
-        <div class="row justify-content-around">
-          <div class="col-4 adguard-coral">
-            <p>Copy of this div will be modified by AdGuard</p>
-          </div>
-          <div class="col-4 adguard-coral copy">
-            <p>Copy of this div will be modified by AdGuard</p>
-          </div>
-        </div>
-      </div>
-    </div>
     <div class="container">
       <div class="row">
         <div class="col">
@@ -91,17 +41,6 @@
         <div class='adguard copy'>This element will be blocked</div>
         `;
     iframeWithoutSrc.contentDocument.write(contentOfFrameWithoutSrc);
-    const printData = async () => {
-      let data;
-      try {
-        const response = await axios.get('src/js/data.json');
-        data = response.data;
-      } catch (error) {
-        console.log(error);
-      }
-      console.log(data);
-    }
-    printData();
   </script>
 </body>
 
