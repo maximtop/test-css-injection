@@ -46,9 +46,9 @@
     iframeWithoutSrc.contentDocument.write(contentOfFrameWithoutSrc);
 
     const iframeRequest = document.querySelector('.iframe-request');
-    axios.get('https://devizier.github.io/test-script-order/').then(data => {
+    axios.get('https://devizier.github.io/test-script-order/').then(response => {
       console.log(data);
-      iframeRequest.contentDocument.write(data);
+      iframeRequest.contentDocument.write(response.data);
     })
   </script>
 </body>
