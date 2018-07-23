@@ -2,90 +2,98 @@
 <html lang="en">
 
 <head>
-    <script src="src/js/index.js" type="text/javascript" async></script>
-    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
-    <script type="text/javascript">
-        console.log('fired from inline script');
-        // window.scriptExecuted = 'blabla from inline script';
-        function changeColor() {
-            var block = document.querySelector('.adguard-coral.copy');
-            if(block) {
-                block.style.background = 'green';
-                return;
-            }
-            requestAnimationFrame(changeColor);
-        }
-        changeColor();
-    </script>
-    <style>
-        .adguard {
-            border: 2px solid lightsalmon;
-            background-color: lightslategray;
-        }
-    </style>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-    <link rel="stylesheet" href="src/css/styles.css">
+  <script src="src/js/index.js" type="text/javascript" async></script>
+  <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+  <script type="text/javascript">
+    console.log('fired from inline script');
+    // window.scriptExecuted = 'blabla from inline script';
+    function changeColor() {
+      var block = document.querySelector('.adguard-coral.copy');
+      if (block) {
+        block.style.background = 'green';
+        return;
+      }
+      requestAnimationFrame(changeColor);
+    }
+    changeColor();
+  </script>
+  <style>
+    .adguard {
+      border: 2px solid lightsalmon;
+      background-color: lightslategray;
+    }
+  </style>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+  <link rel="stylesheet" href="src/css/styles.css">
 
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Test script order execution with enabled AdGuard extension</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Test script order execution with enabled AdGuard extension</title>
 </head>
 
 <body>
-    <div id="scriptExecuted">Test scriptExecuted</div>
-    <div class="container">
-        <h1>Test script order execution with enabled AdGuard extension</h1>
-        <div class='row py-2 block'>
-            <div class="container">
-                <div class="row">
-                    <div class="col">
-                        <h2>Block 1 will be removed</h2>
-                    </div>
-                </div>
-                <div class="row justify-content-around">
-                    <div class="col-4 adguard">
-                        <p>Copy of this div will be removed by AdGuard</p>
-                    </div>
-                    <div class="col-4 adguard copy">
-                        <p>Copy of this div will be removed by AdGuard</p>
-                    </div>
-                </div>
-            </div>
+  <div id="scriptExecuted">Test scriptExecuted</div>
+  <div class="container">
+    <h1>Test script order execution with enabled AdGuard extension</h1>
+    <div class='row py-2 block'>
+      <div class="container">
+        <div class="row">
+          <div class="col">
+            <h2>Block 1 will be removed</h2>
+          </div>
         </div>
-        <div class="row py-2 block">
-            <div class="container">
-                <div class="row">
-                    <div class="col">
-                        <h2>Block 2 will be changed</h2>
-                    </div>
-                </div>
-                <div class="row justify-content-around">
-                    <div class="col-4 adguard-coral">
-                        <p>Copy of this div will be modified by AdGuard</p>
-                    </div>
-                    <div class="col-4 adguard-coral copy">
-                        <p>Copy of this div will be modified by AdGuard</p>
-                    </div>
-                </div>
-            </div>
+        <div class="row justify-content-around">
+          <div class="col-4 adguard">
+            <p>Copy of this div will be removed by AdGuard</p>
+          </div>
+          <div class="col-4 adguard copy">
+            <p>Copy of this div will be removed by AdGuard</p>
+          </div>
         </div>
-        <h1>Test iframe</h1>
-        <iframe src="https://devizier.github.io/test-script-order/" width="800" height="400"></iframe>
+      </div>
     </div>
-    <script type="text/javascript">
-        const printData = async () => {
-            let data;
-            try {
-                const response = await axios.get('src/js/data.json');
-                data = response.data;
-            } catch (error) {
-                console.log(error);
-            }
-            console.log(data);
-            }
-        printData();
-    </script>
+    <div class="row py-2 block">
+      <div class="container">
+        <div class="row">
+          <div class="col">
+            <h2>Block 2 will be changed</h2>
+          </div>
+        </div>
+        <div class="row justify-content-around">
+          <div class="col-4 adguard-coral">
+            <p>Copy of this div will be modified by AdGuard</p>
+          </div>
+          <div class="col-4 adguard-coral copy">
+            <p>Copy of this div will be modified by AdGuard</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <h1>Test iframe</h1>
+    <iframe src="https://devizier.github.io/test-script-order/" width="800" height="200"></iframe>
+    <iframe class='iframe-without-src'></iframe>
+  </div>
+  <script type="text/javascript">
+    const iframeWithoutSrc = document.querySelector('.iframe-without-src');
+    console.log(iframeWithoutSrc);
+    const contentOfFrameWithoutSrc = `
+        <h1>This iframe doesn't has src</h1>
+        <div class='adguard copy'>This element will be blocked</div>
+        `;
+    iframeWithoutSrc.contentDocument.write(contentOfFrameWithoutSrc);
+    const printData = async () => {
+      let data;
+      try {
+        const response = await axios.get('src/js/data.json');
+        data = response.data;
+      } catch (error) {
+        console.log(error);
+      }
+      console.log(data);
+    }
+    printData();
+  </script>
 </body>
 
 </html>

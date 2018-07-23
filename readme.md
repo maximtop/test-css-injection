@@ -1,6 +1,5 @@
-# Test Script Order
-Simple page with scripts in the head
-Created to check if AdGuard can execute scripts before page scripts
+# Test CSS injection
+Page with two iframes, 1 with src and one without
 
 ## Page address
-https://maximtop.github.io/test-script-order/
+https://maximtop.github.io/test-css-injection
