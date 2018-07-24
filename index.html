@@ -53,7 +53,7 @@
   const iframeWithoutSrc = document.querySelector('.iframe-without-src');
   const contentOfFrameWithoutSrc = `<h1>This iframe doesn't has src</h1>
         <div class='adguard copy'>This element will be blocked</div>`;
-  // iframeWithoutSrc.contentDocument.write(contentOfFrameWithoutSrc);
+  iframeWithoutSrc.contentDocument.write(contentOfFrameWithoutSrc);
 
   const iframeRequest = document.querySelector('.iframe-request');
   axios.get('https://devizier.github.io/test-script-order/').then(response => {
