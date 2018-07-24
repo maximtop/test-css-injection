@@ -4,14 +4,14 @@
 <head>
   <script src="src/js/index.js" type="text/javascript" async></script>
   <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
-  </script>
   <style>
     .adguard {
       border: 2px solid lightsalmon;
       background-color: lightslategray;
     }
   </style>
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+        integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
   <link rel="stylesheet" href="src/css/styles.css">
 
   <meta charset="UTF-8">
@@ -21,46 +21,46 @@
 </head>
 
 <body>
-  <div class="container">
-    <div class="row">
-      <div class="col">
-        <h1>IFrame with src</h1>
-        <iframe src="https://devizier.github.io/test-script-order/" height="200"></iframe>
-      </div>
-      <div class="col">
-        <h1>IFrame without any src built without request</h1>
-        <iframe class='iframe-without-src' height="200"></iframe>
-      </div>
+<div class="container">
+  <div class="row">
+    <!--<div class="col">-->
+      <!--<h1>IFrame with src</h1>-->
+      <!--<iframe src="https://devizier.github.io/test-script-order/" height="200"></iframe>-->
+    <!--</div>-->
+    <!--<div class="col">-->
+      <!--<h1>IFrame without any src built without request</h1>-->
+      <!--<iframe class='iframe-without-src' height="200"></iframe>-->
+    <!--</div>-->
+  </div>
+  <div class="row">
+    <div class="col">
+      <h1>IFrame build with src="javascript:''"</h1>
+      <iframe class='iframe-request' height="200" src="javascript:''"></iframe>
     </div>
-    <div class="row">
-      <div class="col">
-        <h1>IFrame build with src="javascript:''"</h1>
-        <iframe class='iframe-request' height="200" src="javascript:''"></iframe>
-      </div>
-      <div class="col">
-        <h1>IFrame build with src="about:blank"</h1>
-        <iframe class='iframe-request' height="200" src="about:blank"></iframe>
-      </div>
-    </div>
-    <div class="row">
-      <div class="col">
-        <h1>IFrame build with JS request and empty src</h1>
-        <iframe class='iframe-request' height="200"></iframe>
-      </div>
+    <div class="col">
+      <h1>IFrame build with src="about:blank"</h1>
+      <iframe class='iframe-request' height="200" src="about:blank"></iframe>
     </div>
   </div>
+  <div class="row">
+    <!--<div class="col">-->
+      <!--<h1>IFrame build with JS request and empty src</h1>-->
+      <!--<iframe class='iframe-request' height="200"></iframe>-->
+    <!--</div>-->
   </div>
-  <script type="text/javascript">
-    const iframeWithoutSrc = document.querySelector('.iframe-without-src');
-    const contentOfFrameWithoutSrc = `<h1>This iframe doesn't has src</h1>
+</div>
+</div>
+<script type="text/javascript">
+  const iframeWithoutSrc = document.querySelector('.iframe-without-src');
+  const contentOfFrameWithoutSrc = `<h1>This iframe doesn't has src</h1>
         <div class='adguard copy'>This element will be blocked</div>`;
-    iframeWithoutSrc.contentDocument.write(contentOfFrameWithoutSrc);
+  iframeWithoutSrc.contentDocument.write(contentOfFrameWithoutSrc);
 
-    const iframeRequest = document.querySelector('.iframe-request');
-    axios.get('https://devizier.github.io/test-script-order/').then(response => {
-      iframeRequest.contentDocument.write(response.data);
-    })
-  </script>
+  const iframeRequest = document.querySelector('.iframe-request');
+  axios.get('https://devizier.github.io/test-script-order/').then(response => {
+    iframeRequest.contentDocument.write(response.data);
+  });
+</script>
 </body>
 
 </html>
