@@ -46,6 +46,10 @@
       <h1>IFrame build with JS request and empty src</h1>
       <iframe class='iframe-request' height="200"></iframe>
     </div>
+    <div class="col">
+      <h1>IFrame build with src:doc</h1>
+      <iframe class='srcdoc-iframe' height="200"></iframe>
+    </div>
   </div>
 </div>
 </div>
@@ -59,6 +63,10 @@
   axios.get('https://devizier.github.io/test-script-order/').then(response => {
     iframeRequest.contentDocument.write(response.data);
   });
+
+  const srcDocIframe = document.querySelector('.srcdoc-iframe');
+  srcDocIframe.srcdoc = `<h1>Content in this iframe was added via srcdoc</h1>
+        <div class='adguard copy'>This element will be blocked</div>`;
 </script>
 </body>
 
