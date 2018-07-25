@@ -62,10 +62,11 @@
   iframeWithoutSrc.contentDocument.write(contentForIframe);
   iframeWithoutSrc.contentDocument.close();
 
-  // const iframeRequest = document.querySelector('.iframe-request');
-  // axios.get('https://devizier.github.io/test-script-order/').then(response => {
-  //   iframeRequest.contentDocument.write(response.data);
-  // });
+  const iframeRequest = document.querySelector('.iframe-request');
+  axios.get('https://devizier.github.io/test-script-order/').then(response => {
+    iframeRequest.contentDocument.write(response.data);
+    iframeRequest.contentDocument.close();
+  });
 
   const srcDocIframe = document.querySelector('.srcdoc-iframe');
   srcDocIframe.srcdoc = contentForIframe;
