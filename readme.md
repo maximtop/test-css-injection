@@ -1,5 +1,5 @@
 # Test CSS injection
-Page with two iframes, 1 with src and one without
+This page created for testings AdGuard css injection into iframes 
 
 ## Page address
 https://maximtop.github.io/test-css-injection
