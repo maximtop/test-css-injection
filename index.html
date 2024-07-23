@@ -13,8 +13,6 @@
         integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
   <link rel="stylesheet" href="src/css/styles.css">
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>Test css injection in the documents</title>
 </head>
 
@@ -24,7 +22,7 @@
     <div class="col">
       <h1>IFrame built with src url</h1>
       <iframe src="https://devizier.github.io/test-script-order/" height="200">
-        <script>console.log('IFrame built with src url script')</script> <!-- Added script tag -->
+        <script>console.log('IFrame built with src url script', window.agTest)</script>
       </iframe>
     </div>
     <div class="col">
@@ -35,13 +33,13 @@
   <div class="row">
     <div class="col">
       <h1>IFrame with src="javascript:''"</h1>
-      <iframe height="200" src="javascript:(function () { return`data:text/html;charset=UTF-8,<script>console.log('hello from iframe with scr=javascript')<script/><h2>This iframe doesn't has src</h2>
+      <iframe height="200" src="javascript:(function () { return`data:text/html;charset=UTF-8,<script>console.log('hello from iframe with scr=javascript', window.agTest)<script/><h2>This iframe doesn't has src</h2>
           <div class='adguard copy'>This element will be blocked</div>`;})()"></iframe>
     </div>
     <div class="col">
       <h1>IFrame with src="about:blank"</h1>
       <iframe height="200" src="about:blank">
-        <script>console.log('IFrame with src="about:blank"')</script>
+        <script>console.log('IFrame with src="about:blank"', window.agTest)</script>
       </iframe>
     </div>
   </div>
@@ -58,14 +56,14 @@
   <div class="row">
     <div class="col">
       <h1>IFrame with src="data:"</h1>
-      <iframe class='iframe-request' height="200" src="data:text/html;charset=UTF-8,<script>console.log('hello from IFrame with src=data:')</script><h2>This iframe doesn't has src</h2>
+      <iframe class='iframe-request' height="200" src="data:text/html;charset=UTF-8,<script>console.log('hello from IFrame with src=data:', window.agTest)</script><h2>This iframe doesn't has src</h2>
           <div class='adguard copy'>This element will be blocked</div>"></iframe>
     </div>
   </div>
 </div>
 <script type="text/javascript">
 
-  const contentForIframe = String.raw`<script>console.log('hello from iframe without src')<\/script><h2>This iframe doesn't has src</h2>
+  const contentForIframe = String.raw`<script>console.log('hello from iframe without src', window.agTest)<\/script><h2>This iframe doesn't has src</h2>
           <div class='adguard copy'>This element will be blocked</div>`;
 
   const iframeWithoutSrc = document.querySelector('.iframe-without-src');

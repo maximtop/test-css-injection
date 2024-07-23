@@ -1,1 +1,1 @@
-console.log('fired from external script');
+console.log('hi from external script', window.agTest);
